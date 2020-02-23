@@ -1,7 +1,6 @@
 import csv
 import pandas
 import matplotlib.pyplot as plt
-import numpy as np
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
@@ -23,21 +22,15 @@ def get_all_data(filename):
     return [X, Y, Y_pred]
 
 a_list = get_all_data('Data/Tech_total.csv')
-fig = plt.scatter(a_list[0], a_list[1])
-fig = plt.plot(a_list[0], a_list[2], color='blue')
+plt.scatter(a_list[0], a_list[1])
+plt.plot(a_list[0], a_list[2], color='blue')
 
-fig = a_list = get_all_data('Data/Tech_FLU.csv')
-fig = plt.scatter(a_list[0], a_list[1])
-fig = plt.plot(a_list[0], a_list[2], color='orange')
+a_list = get_all_data('Data/Tech_FLU.csv')
+plt.scatter(a_list[0], a_list[1])
+plt.plot(a_list[0], a_list[2], color='orange')
 
-fig = a_list = get_all_data('Data/Tech_SARS.csv')
-fig = plt.scatter(a_list[0], a_list[1])
-fig = plt.plot(a_list[0], a_list[2], color='green')
+a_list = get_all_data('Data/Tech_SARS.csv')
+plt.scatter(a_list[0], a_list[1])
+plt.plot(a_list[0], a_list[2], color='green')
 
 plt.show()
-
-tech_listtotal = get_all_data('Data/Tech_total.csv')
-tech_listflue = get_all_data('Data/Tech_FLU.csv')
-tech_listsars = get_all_data('Data/Tech_SARS.csv')
-
-

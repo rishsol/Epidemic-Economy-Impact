@@ -75,4 +75,4 @@ df_norm_industry['Flu Slope'] = pandas.Series(norm_flu)
 df_norm_industry['Average Slope Disease'] = pandas.Series(avg_slope_disease)
 df_norm_industry['Control'] =  pandas.Series(norm_overall)
 
-print(df_norm_industry)
+print(df_norm_industry) 
