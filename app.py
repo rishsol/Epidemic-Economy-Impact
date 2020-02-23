@@ -95,6 +95,9 @@ fig1.add_trace(go.Scatter(x=df_sars_tech['X'], y=df_sars_tech['YPred'],
                     marker_color='pink'),
                     row=2,col=1)
 
+fig1.update_yaxes(title_text="USD", row=1, col=1)
+fig1.update_xaxes(title_text='Proportion of epidemic completed', row=2, col=1)
+fig1.update_yaxes(title_text="USD", row=2, col=1)
 
 df_total_agri = get_all_data('Data/Agricultural_total.csv')
 df_flu_agri = get_all_data('Data/Agri_FLU.csv')
@@ -279,7 +282,7 @@ fig6.add_trace(go.Scatter(x=df_sars_re['X'], y=df_sars_re['YPred'],
 
 
 app.layout = html.Div(children=[
-    html.H1(children='Demo'),
+    html.H1(children='Effects of Epidemics on Various ETFs'),
     dcc.Graph(
         id = 'tech',
         figure = fig1
@@ -308,8 +311,8 @@ app.layout = html.Div(children=[
         [
             html.Img(
                 src=app.get_asset_url('AggregateSlope.png'),
-                id="plotly-image",
-                style={
+                id="agg-slope",
+                style= {
                     'display': 'block',
                     'height': '360px',
                     'width': 'auto',
@@ -318,7 +321,45 @@ app.layout = html.Div(children=[
                 }
             )
         ]
-    )
+    ),
+    html.Div(
+        [
+            html.P('The above graph gives normalize rates of change of various ETFs during 2000-2010 and during the SARS and Swine flu outbreaks. Agriculture and Energy did relatively worse over the course of the two epidemics than real estate, tech, healthcare, and manufacturing',
+                style= {
+                    'align': 'center'
+                }
+            ),
+            html.P('To maintain financial security, a potential investor would want to avoid investing in the first two industries during a time of plague',
+                style= {
+                    'align': 'center'
+                }
+            )
+        ]
+    ),
+    html.Div(
+        [
+            html.Img(
+                src=app.get_asset_url('EpidemicVar.png'),
+                id="var",
+                style= {
+                    'display': 'block',
+                    'height': '360px',
+                    'width': 'auto',
+                    'margin-left': 'auto',
+                    'margin-right': 'auto'
+                }
+            )
+        ]
+    ),
+    html.Div(
+        [
+            html.P('A negative value indicates that rate of growth of the corresponding ETF dropped during time of epidemic and vice versa',
+                style= {
+                    'align': 'center'
+                }
+            ),
+        ]
+    ),
 ])
 
 if __name__ == '__main__':
