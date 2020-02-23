@@ -22,23 +22,6 @@ def get_slope(filename):
 
     return float(Y_pred[len(Y_pred) - 1] - Y_pred[0])
 
-def get_all_data(filename):
-    df_ETF = pandas.read_csv(filename)
-    ds_ETF_Close = df_ETF['Close']
-    ds_time = pandas.Series(list(range(len(df_ETF))))
-
-    df_ETF_Final = pandas.DataFrame()
-    df_ETF_Final['Time'] = ds_time/len(df_ETF)
-    df_ETF_Final['Close'] = ds_ETF_Close
-
-    X = df_ETF_Final.iloc[:, 0].values.reshape(-1, 1)  
-    Y = df_ETF_Final.iloc[:, 1].values.reshape(-1, 1)  
-    linear_regressor = LinearRegression()  
-    linear_regressor.fit(X, Y)
-    Y_pred = linear_regressor.predict(X) 
-
-    return [X, Y, Y_pred]
-
 df_industry_matrix = pandas.DataFrame()
 df_industry_matrix['Industry'] = pandas.Series(['Agri', 'Energy', 'Real Estate', 'Tech', 'Healthcare', 'Manufacturing'])
 
@@ -92,7 +75,4 @@ df_norm_industry['Flu Slope'] = pandas.Series(norm_flu)
 df_norm_industry['Average Slope Disease'] = pandas.Series(avg_slope_disease)
 df_norm_industry['Control'] =  pandas.Series(norm_overall)
 
-tech_list = get_all_data('Data/Agricultural_total.csv')
-plt.scatter(tech_list[0], tech_list[1])
-plt.plot(tech_list[0], tech_list[2], color='red')
-plt.show()
+print(df_norm_industry)
